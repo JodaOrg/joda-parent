@@ -43,7 +43,7 @@
   </licenses>
   <scm>
     <connection>scm:git:https://github.com/JodaOrg/${joda.artifactId}.git</connection>
-    <developerConnection>scm:git:git@github.com:JodaOrg/${joda.artifactId}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/JodaOrg/${joda.artifactId}.git</developerConnection>
     <url>https://github.com/JodaOrg/${joda.artifactId}</url>
   </scm>
   <organization>
