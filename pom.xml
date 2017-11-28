@@ -300,6 +300,8 @@
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <preparationGoals>clean validate</preparationGoals>
             <tagNameFormat>v@{project.version}</tagNameFormat>
+            <localCheckout>true</localCheckout>
+            <releaseProfiles>release-basics</releaseProfiles>
             <goals>nexus-staging:deploy</goals>
           </configuration>
         </plugin>
