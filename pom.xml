@@ -303,7 +303,6 @@
             <tagNameFormat>v@{project.version}</tagNameFormat>
             <localCheckout>true</localCheckout>
             <releaseProfiles>release-basics</releaseProfiles>
-            <goals>nexus-staging:deploy</goals>
           </configuration>
         </plugin>
         <!-- Setup Checkstyle, excluding module-info -->
