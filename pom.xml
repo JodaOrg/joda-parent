@@ -727,6 +727,19 @@
               </execution>
             </executions>
           </plugin>
+          <!-- Use nexus plugin to directly release -->
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>${nexus-staging-maven-plugin.version}</version>
+            <extensions>true</extensions>
+            <configuration>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <serverId>sonatype-joda-staging</serverId>
+              <description>Releasing ${project.groupId}:${project.artifactId}:${project.version}</description>
+              <autoReleaseAfterClose>${joda.nexus.auto.release}</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -738,6 +751,7 @@
     <joda.osgi.packages>org.joda.*</joda.osgi.packages>
     <joda.artifactId>joda-collect</joda.artifactId>
     <joda.release.version>8</joda.release.version>
+    <joda.nexus.auto.release>true</joda.nexus.auto.release>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
     <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
@@ -764,6 +778,7 @@
     <maven-surefire-report-plugin.version>2.20.1</maven-surefire-report-plugin.version>
     <maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
     <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+    <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     <spotbugs-maven-plugin.version>3.1.0-RC8</spotbugs-maven-plugin.version>
     <!-- Properties for maven-compiler-plugin -->
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>

@@ -10,5 +10,4 @@ It is licensed under the business-friendly [Apache 2.0 licence](http://www.joda.
 
 * Update version (pom.xml)
 * Commit and push
-* `mvn clean deploy -Doss.repo -Dgpg.passphrase=""`
-* Release project in [Nexus](https://oss.sonatype.org)
+* `mvn clean deploy -Doss.repo -Dgpg.passphrase="xxx"`
