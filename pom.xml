@@ -698,6 +698,9 @@
           <name>oss.repo</name>
         </property>
       </activation>
+      <properties>
+        <updateWorkingCopyVersions>false</updateWorkingCopyVersions>
+      </properties>
       <build>
         <plugins>
           <!-- Enforce release is on Java 9 or later -->
