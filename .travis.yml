@@ -13,3 +13,10 @@ install:
   - mvn --version
 script:
   - mvn install -e -B
+after_success:
+  - if [[ $TRAVIS_TAG =~ ^v.*$ ]] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk9" ]; then mvn clean deploy -Doss.repo -e -B --settings .github/maven-settings.xml; fi
+# secure keys for SONATYPE_PW, GPG_PASSPHRASE
+env:
+  global:
+  - secure: dnZOMpOLZ2PJX++uLxm84P7WE610S2kLqTujlsX/KiaXW/PYim5UgWT+9h2Mgo+RQM0My8bllI931yUTkm44El82mKGyVpKJavYH2e1+iudSzD5weo8mcEWNhmr2EGnYq8coEZf3jg5kzRjzIR0xvqyoPkt8JqbJvPS4cQstHOPCH3htZAnqCbZdGjKXyNQzzUDgUSaUQA3j054cLABnD8i7KqK6QgxvjhpkIMijpu+HdTmW+NE7hQeCkEzdVIv1+gEc/uWywoo5yANfeAjlCv/3rTqy3MuXpq2xK/hM6wptDkCqwchzhNNHNVZd3DMNgCOjHNNs+RjmyS3xC9IA9+FFqyaIAfFbeqzbyIxmTkR6zlJPccFXVi7H5f2Rx2REsnsTZKFa8sdtA50PT6TkadKEubCBJrZHLujnFsozaAjA2F//jJFcWRwg+IZjtJI8RIB6qZMT1033SNHeNZ9pIbrTAWeQ0ClvTCc+3f/3TQutQCHJQeM+7N09L/WXN55XQopOBkRDQA12gyXDZ0f157JHJq+zh9+4eLy+FUZfWSk+xrKRO6tZ/ljRCfEeEPSTzcUt7Km8bRV8Sgo5kCQ2ub0gMbWhGTK8IXGRhZnBBdCDkabwcH9qCfB3CzEsK28v4f4r/6cYiO48G24FhfeGOQmzNG9g/ThH4YUfgY9bwTY=
+  - secure: DX9OzdV773hZeG6XKtZ3X85GuKbSXOJm+fN5hozyaqlUaHZPUCA/HkTYDDp71x0noBPxUU9qrcMRi5nHiqe9XJHVr0lutS9eeSy0OMxKxjFn8+qQgeN0CBURqnGggQqdu4bSUTQwVAj27eoUcJahUHBX63FDxHiL1TthBelkDypdF0Ap9R4eC2q4CZVoQHQqhJTvRu8yoHg4VUlmFBlFOL2flD6MaSsYguGktUEUX1Iifa4QuliZpyhBZmuTgfX1UgHhQffnyUdqhuQovy84FBjr5arDwKF+Q78jt099TL7c9m6HPU854YAqbBx5JJYE/WIbje4SKB+tJAnDr2W97EyfQZaIc9wvoTAb9+OD50SlKfVVh0L8iK9TtcudLbiubR1VxZo/RIZardwsy6au8d+sehzrdqbnlqdJxkQctMzbK+f1EN6k9yNyZEP9b+LU3xBIP369YnQDXPKvI9m5u0DyZ97idIBJ9UksztYb/EUJ8UPkmzdyG0mZtypp/X3bo81SesLQDkFCnNYMqIH4hbInRNZtNRkYQc2LG5v9QfEnknbStSP8GxJN9astS1GK+hordPxMF5Wf4pqlc393z4saMPOyQO225WvfpX5VLcPVpR7VrOk+AzDKKdEpLVNgdxE3atdriu6/O7WxR+D36oCRxF4v5WqzHGXbTupyp0s=
