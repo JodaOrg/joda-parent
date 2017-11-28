@@ -13,7 +13,7 @@
   <artifactId>joda-parent</artifactId>
   <packaging>pom</packaging>
   <name>Joda-Parent</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.9-SNAPSHOT</version>
   <description>Maven parent pom.xml for Joda projects</description>
   <url>http://www.joda.org/</url>
 
@@ -751,7 +751,7 @@
     <joda.osgi.packages>org.joda.*</joda.osgi.packages>
     <joda.artifactId>joda-collect</joda.artifactId>
     <joda.release.version>8</joda.release.version>
-    <joda.nexus.auto.release>true</joda.nexus.auto.release>
+    <joda.nexus.auto.release>false</joda.nexus.auto.release>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
     <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
