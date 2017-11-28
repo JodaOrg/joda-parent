@@ -756,7 +756,7 @@
   <properties>
     <!-- Parent pom.xml control -->
     <joda.osgi.packages>org.joda.*</joda.osgi.packages>
-    <joda.artifactId>joda-collect</joda.artifactId>
+    <joda.artifactId>joda-parent</joda.artifactId>
     <joda.release.version>8</joda.release.version>
     <joda.nexus.auto.release>false</joda.nexus.auto.release>
     <!-- Plugin version numbers -->
