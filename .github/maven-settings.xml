@@ -8,19 +8,10 @@
       <username>jodastephen</username>
       <password>${SONATYPE_PW}</password>
     </server>
+    <server>
+      <id>gpg.passphrase</id>
+      <passphrase>${GPG_PASSPHRASE}</passphrase>
+    </server>
   </servers>
-
-  <profiles>
-    <profile>
-      <id>joda-gpg-setup</id>
-      <properties>
-        <gpg.passphrase>${GPG_PASSPHRASE}</gpg.passphrase>
-      </properties>
-    </profile>
-  </profiles>
-  
-  <activeProfiles>
-    <activeProfile>joda-gpg-setup</activeProfile>
-  </activeProfiles>
 
 </settings>
