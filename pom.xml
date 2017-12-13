@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <!-- ==================================================================== -->
   <!-- Build requires Java SE 8 or later -->
@@ -13,7 +10,7 @@
   <artifactId>joda-parent</artifactId>
   <packaging>pom</packaging>
   <name>Joda-Parent</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.9-SNAPSHOT</version>
   <description>Maven parent pom.xml for Joda projects</description>
   <url>http://www.joda.org/</url>
 
@@ -294,6 +291,20 @@
           <artifactId>maven-toolchains-plugin</artifactId>
           <version>${maven-toolchains-plugin.version}</version>
         </plugin>
+        <!-- Setup release -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+          <configuration>
+            <arguments>-Doss.repo</arguments>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <tagNameFormat>v@{project.version}</tagNameFormat>
+            <localCheckout>true</localCheckout>
+            <!--releaseProfiles>release-basics</releaseProfiles-->
+            <goals>nexus-staging:deploy</goals>
+          </configuration>
+        </plugin>
         <!-- Setup Checkstyle, excluding module-info -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -378,7 +389,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore />
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -392,7 +403,7 @@
   <!-- ==================================================================== -->
   <reporting>
     <plugins>
-      <!-- Setup standad project info reports -->
+      <!-- Setup standard project info reports -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -751,7 +762,7 @@
     <joda.osgi.packages>org.joda.*</joda.osgi.packages>
     <joda.artifactId>joda-parent</joda.artifactId>
     <joda.release.version>8</joda.release.version>
-    <joda.nexus.auto.release>true</joda.nexus.auto.release>
+    <joda.nexus.auto.release>false</joda.nexus.auto.release>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
     <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
@@ -769,6 +780,7 @@
     <maven-plugin-plugin.version>3.5</maven-plugin-plugin.version>
     <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
     <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-repository-plugin.version>2.4</maven-repository-plugin.version>
     <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
     <!-- v3.6 doesn't work with theme -->
