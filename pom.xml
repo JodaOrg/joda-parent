@@ -612,6 +612,30 @@
         </plugins>
       </build>
     </profile>
+    <!-- Add Automatic-Module-Name -->
+    <profile>
+      <id>modulename</id>
+      <activation>
+        <file>
+          <missing>src/main/java/module-info.java</missing>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifestEntries>
+                  <Automatic-Module-Name>${joda.module.name}</Automatic-Module-Name>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <!-- Check for incompatible changes, use `mvn revapi:check -Dcompat -DoldVersion=xxx` -->
     <profile>
       <id>compat</id>
