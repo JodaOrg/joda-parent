@@ -8,6 +8,5 @@ It is licensed under the business-friendly [Apache 2.0 licence](http://www.joda.
 
 ### Release process
 
-* Update version (pom.xml)
-* Commit and push
-* `mvn clean deploy -Doss.repo -Dgpg.passphrase="xxx"`
+* Ensure everything is ready to release
+* `mvn clean release:prepare release:perform`
