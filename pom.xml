@@ -125,6 +125,7 @@
             <configuration>
               <instructions>
                 <Export-Package>${joda.osgi.packages}</Export-Package>
+                <Require-Capability>${joda.osgi.require.capability}</Require-Capability>
               </instructions>
             </configuration>
           </execution>
@@ -783,6 +784,7 @@
   <properties>
     <!-- Parent pom.xml control -->
     <joda.osgi.packages>org.joda.*</joda.osgi.packages>
+    <joda.osgi.require.capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=${maven.compiler.source}))"</joda.osgi.require.capability>
     <joda.artifactId>joda-parent</joda.artifactId>
     <joda.release.version>8</joda.release.version>
     <joda.nexus.auto.release>true</joda.nexus.auto.release>
