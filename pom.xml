@@ -687,6 +687,43 @@
         </plugins>
       </build>
     </profile>
+    <!-- Additional jar file for systems too dozy to handle Java 9 -->
+    <profile>
+      <id>classicjar</id>
+      <activation>
+        <file>
+          <exists>src/main/java/module-info.java</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>classic</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <classifier>classic</classifier>
+                  <archive>
+                    <manifestEntries>
+                      <Automatic-Module-Name>${joda.module.name}</Automatic-Module-Name>
+                    </manifestEntries>
+                  </archive>
+                  <excludes>
+                    <exclude>module-info*</exclude>
+                  </excludes>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <!-- Check for incompatible changes, use `mvn revapi:check -Dcompat -DoldVersion=xxx` -->
     <profile>
       <id>compat</id>
