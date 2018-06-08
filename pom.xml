@@ -10,7 +10,7 @@
   <artifactId>joda-parent</artifactId>
   <packaging>pom</packaging>
   <name>Joda-Parent</name>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.1</version>
   <description>Maven parent pom.xml for Joda projects</description>
   <url>http://www.joda.org/</url>
 
@@ -45,7 +45,7 @@
     <connection>scm:git:https://github.com/JodaOrg/${joda.artifactId}.git</connection>
     <developerConnection>scm:git:https://github.com/JodaOrg/${joda.artifactId}.git</developerConnection>
     <url>https://github.com/JodaOrg/${joda.artifactId}</url>
-    <tag>HEAD</tag>
+    <tag>v1.1</tag>
   </scm>
   <organization>
     <name>Joda.org</name>
