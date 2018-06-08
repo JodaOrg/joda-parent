@@ -360,14 +360,9 @@
           </configuration>
           <dependencies>
             <dependency>
-              <groupId>lt.velykis.maven.skins</groupId>
+              <groupId>org.joda.external</groupId>
               <artifactId>reflow-velocity-tools</artifactId>
-              <version>1.1.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.velocity</groupId>
-              <artifactId>velocity</artifactId>
-              <version>1.7</version>
+              <version>1.2</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -845,8 +840,7 @@
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-repository-plugin.version>2.4</maven-repository-plugin.version>
     <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-    <!-- v3.6 doesn't work with theme -->
-    <maven-site-plugin.version>3.4</maven-site-plugin.version>
+    <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
     <maven-surefire-report-plugin.version>2.21.0</maven-surefire-report-plugin.version>
