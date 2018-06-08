@@ -10,7 +10,7 @@
   <artifactId>joda-parent</artifactId>
   <packaging>pom</packaging>
   <name>Joda-Parent</name>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <description>Maven parent pom.xml for Joda projects</description>
   <url>http://www.joda.org/</url>
 
