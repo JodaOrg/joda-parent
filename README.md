@@ -9,5 +9,5 @@ It is licensed under the business-friendly [Apache 2.0 licence](http://www.joda.
 ### Release process
 
 * Ensure everything is ready to release
-* `mvn clean release:prepare release:perform`
+* `mvn clean release:clean release:prepare release:perform`
 * `git fetch`
