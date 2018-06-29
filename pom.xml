@@ -322,6 +322,13 @@
           <configuration>
             <excludes>module-info.java</excludes>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <!-- Setup SpotBugs dependency -->
         <plugin>
@@ -406,11 +413,12 @@
         <reportSets>
           <reportSet>
             <reports>
+              <report>ci-management</report>
               <report>dependencies</report>
               <report>dependency-info</report>
-              <report>issue-tracking</report>
-              <report>license</report>
-              <report>project-team</report>
+              <report>issue-management</report>
+              <report>licenses</report>
+              <report>team</report>
               <report>scm</report>
               <report>summary</report>
             </reports>
@@ -823,7 +831,7 @@
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
     <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-    <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+    <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
@@ -836,19 +844,18 @@
     <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
     <maven-plugin-plugin.version>3.5.2</maven-plugin-plugin.version>
     <maven-pmd-plugin.version>3.10.0</maven-pmd-plugin.version>
-    <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
+    <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-repository-plugin.version>2.4</maven-repository-plugin.version>
     <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
     <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-    <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-    <maven-surefire-report-plugin.version>2.21.0</maven-surefire-report-plugin.version>
+    <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+    <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
     <maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
     <jacoco-maven-plugin.version>0.8.1</jacoco-maven-plugin.version>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-    <!-- Moving beyond this version of spotbugs adds a Java 8 dependency -->
-    <spotbugs-maven-plugin.version>3.1.0-RC8</spotbugs-maven-plugin.version>
+    <spotbugs-maven-plugin.version>3.1.5</spotbugs-maven-plugin.version>
     <!-- Properties for maven-compiler-plugin -->
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -859,6 +866,7 @@
     <notimestamp>true</notimestamp>
     <doclint>none</doclint>
     <!-- Properties for maven-checkstyle-plugin -->
+    <checkstyle.version>8.10.1</checkstyle.version>
     <checkstyle.config.location>src/main/checkstyle/checkstyle.xml</checkstyle.config.location>
     <linkXRef>false</linkXRef>
     <!-- Other properties -->
