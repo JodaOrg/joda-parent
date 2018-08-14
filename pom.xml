@@ -617,9 +617,6 @@
             </executions>
             <!-- setup defaults for compile and testCompile -->
             <configuration>
-              <jdkToolchain>
-                <version>9</version>
-              </jdkToolchain>
               <release>${joda.release.version}</release>
             </configuration>
           </plugin>
