@@ -89,30 +89,16 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Setup Jar file manifest entries -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-            <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
       <!-- Setup OSGi bundle data, with fix for Java 9 -->
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.5.4</version>
+        <version>${maven-bundle-plugin.version}</version>
         <dependencies>
           <dependency>
             <groupId>biz.aQute.bnd</groupId>
             <artifactId>biz.aQute.bndlib</artifactId>
-            <version>3.5.0</version>
+            <version>${bndlib.version}</version>
           </dependency>
         </dependencies>
         <executions>
@@ -130,6 +116,20 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <!-- Setup Jar file manifest entries -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
       <!-- Setup Javadoc jar -->
       <plugin>
@@ -644,7 +644,7 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
-              <additionalparam>--module-path ${project.build.directory}/dependencies</additionalparam>
+              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies ${argLine}</additionalparam>
             </configuration>
           </plugin>
         </plugins>
@@ -657,7 +657,7 @@
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>${maven-javadoc-plugin.version}</version>
             <configuration>
-              <additionalparam>--module-path ${project.build.directory}/dependencies</additionalparam>
+              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies ${argLine}</additionalparam>
             </configuration>
           </plugin>
         </plugins>
@@ -737,12 +737,12 @@
           <plugin>
             <groupId>org.revapi</groupId>
             <artifactId>revapi-maven-plugin</artifactId>
-            <version>0.9.5</version>
+            <version>${revapi-maven-plugin.version}</version>
             <dependencies>
               <dependency>
                 <groupId>org.revapi</groupId>
                 <artifactId>revapi-java</artifactId>
-                <version>0.14.4</version>
+                <version>${revapi-java.version}</version>
               </dependency>
             </dependencies>
             <executions>
@@ -826,8 +826,10 @@
     <joda.artifactId>joda-parent</joda.artifactId>
     <joda.release.version>8</joda.release.version>
     <joda.nexus.auto.release>true</joda.nexus.auto.release>
+    <joda.javadoc.moduleargs></joda.javadoc.moduleargs>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+    <maven-bundle-plugin.version>2.5.4</maven-bundle-plugin.version>
     <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
     <!-- v3.0.0 does not work with Eclipse -->
     <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
@@ -852,8 +854,11 @@
     <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
     <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
     <maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
+    <bndlib.version>3.5.0</bndlib.version>
     <jacoco-maven-plugin.version>0.8.1</jacoco-maven-plugin.version>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <revapi-maven-plugin.version>0.9.5</revapi-maven-plugin.version>
+    <revapi-java.version>0.14.4</revapi-java.version>
     <site-maven-plugin.version>0.13-M1</site-maven-plugin.version>
     <spotbugs-maven-plugin.version>3.1.6</spotbugs-maven-plugin.version>
     <!-- Properties for maven-compiler-plugin -->
