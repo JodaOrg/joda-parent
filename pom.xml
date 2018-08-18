@@ -159,30 +159,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Setup to deploy site to GitHub, invoked with mvn site-deploy -->
-      <plugin>
-        <groupId>com.github.github</groupId>
-        <artifactId>site-maven-plugin</artifactId>
-        <version>${site-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>github-site</id>
-            <goals>
-              <goal>site</goal>
-            </goals>
-            <phase>site-deploy</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <message>Create website for ${joda.artifactId} v${project.version}</message>
-          <path>${joda.artifactId}</path>
-          <merge>true</merge>
-          <server>github</server>
-          <repositoryOwner>JodaOrg</repositoryOwner>
-          <repositoryName>jodaorg.github.io</repositoryName>
-          <branch>refs/heads/master</branch>
-        </configuration>
-      </plugin>
     </plugins>
     <!-- Manage plugin versions -->
     <pluginManagement>
@@ -365,6 +341,17 @@
           <configuration>
             <skipDeploy>true</skipDeploy>
           </configuration>
+          <executions>
+            <execution>
+              <id>attach-descriptor</id>
+              <goals>
+                <goal>attach-descriptor</goal>
+              </goals>
+              <configuration>
+                <skip>${joda.attach.site}</skip>
+              </configuration>
+            </execution>
+          </executions>
           <dependencies>
             <dependency>
               <groupId>org.joda.external</groupId>
@@ -826,6 +813,7 @@
     <joda.artifactId>joda-parent</joda.artifactId>
     <joda.release.version>8</joda.release.version>
     <joda.nexus.auto.release>true</joda.nexus.auto.release>
+    <joda.attach.site>true</joda.attach.site>
     <joda.javadoc.moduleargs></joda.javadoc.moduleargs>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
@@ -859,7 +847,6 @@
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     <revapi-maven-plugin.version>0.9.5</revapi-maven-plugin.version>
     <revapi-java.version>0.14.4</revapi-java.version>
-    <site-maven-plugin.version>0.13-M1</site-maven-plugin.version>
     <spotbugs-maven-plugin.version>3.1.6</spotbugs-maven-plugin.version>
     <!-- Properties for maven-compiler-plugin -->
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
