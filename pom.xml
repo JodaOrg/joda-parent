@@ -607,7 +607,7 @@
               <release>${joda.release.version}</release>
             </configuration>
           </plugin>
-          <!-- Hack to extract dependencies for Javadoc plugin -->
+          <!-- Hack to extract dependencies for Surefire and Javadoc plugin -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
@@ -626,12 +626,20 @@
               </execution>
             </executions>
           </plugin>
+          <!-- Surefire plugin is broken, https://issues.apache.org/jira/browse/SUREFIRE-1501 -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <argLine>${joda.surefire.moduleargs} --module-path ${project.build.directory}/dependencies ${argLine}</argLine>
+            </configuration>
+          </plugin>
           <!-- Javadoc plugin v3.0.0 is broken, https://issues.apache.org/jira/browse/MJAVADOC-506 -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
-              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies ${argLine}</additionalparam>
+              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies</additionalparam>
             </configuration>
           </plugin>
         </plugins>
@@ -644,7 +652,7 @@
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>${maven-javadoc-plugin.version}</version>
             <configuration>
-              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies ${argLine}</additionalparam>
+              <additionalparam>${joda.javadoc.moduleargs} --module-path ${project.build.directory}/dependencies</additionalparam>
             </configuration>
           </plugin>
         </plugins>
@@ -777,6 +785,7 @@
     <joda.release.version>8</joda.release.version>
     <joda.nexus.auto.release>true</joda.nexus.auto.release>
     <joda.attach.site>true</joda.attach.site>
+    <joda.surefire.moduleargs></joda.surefire.moduleargs>
     <joda.javadoc.moduleargs></joda.javadoc.moduleargs>
     <!-- Plugin version numbers -->
     <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
@@ -792,7 +801,7 @@
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
     <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
-    <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+    <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
     <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
     <maven-plugin-plugin.version>3.5.2</maven-plugin-plugin.version>
     <maven-pmd-plugin.version>3.10.0</maven-pmd-plugin.version>
